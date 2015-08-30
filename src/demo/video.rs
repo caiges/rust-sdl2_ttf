@@ -3,7 +3,9 @@ extern crate sdl2;
 use sdl2::*;
 use sdl2_ttf;
 use sdl2::event::Event;
-use sdl2::keycode::KeyCode;
+use sdl2::keyboard::Keycode;
+use sdl2::video::{Window, WindowPos};
+use sdl2::render::{DriverIterator, Renderer};
 use std::path::Path;
 
 static SCREEN_WIDTH : i32 = 800;
@@ -17,21 +19,23 @@ macro_rules! trying(
 // hadle the annoying Rect i32
 macro_rules! rect(
     ($x:expr, $y:expr, $w:expr, $h:expr) => (
-        sdl2::rect::Rect::new($x as i32, $y as i32, $w as i32, $h as i32)
+        sdl2::rect::Rect::new($x as u32, $y as u32, $w as u32, $h as u32)
     )
 );
 
 pub fn main(filename: &Path) {
-    let mut sdl_context = sdl2::init().video().unwrap();
+    let mut sdl_context = sdl2::init().unwrap();
     sdl2_ttf::init();
 
-    let window = sdl_context.window("rust-sdl2 demo: Video", 800, 600)
-        .position_centered()
-        .opengl()
-        .build()
-        .unwrap();
+    let window = match Window::new(&sdl_context, "rust-sdl2 demo: Video", WindowPos::PosCentered, WindowPos::PosCentered, 800, 600) {
+        Ok(window) => window,
+        Err(err) => panic!("Failed to create window")
+    };
 
-    let mut renderer = window.renderer().build().unwrap();
+    let mut renderer = match Renderer::from_window(window, DriverIterator::Auto) {
+        Ok(renderer) => renderer,
+        Err(err) => panic!("Failed to create renderer")
+    };
 
     // Load a font
     let font = trying!(sdl2_ttf::Font::from_file(filename, 128));
@@ -54,7 +58,7 @@ pub fn main(filename: &Path) {
         for event in sdl_context.event_pump().poll_iter() {
             match event {
                 Event::Quit{..} => break 'mainloop,
-                Event::KeyDown {keycode: KeyCode::Escape, ..} => break 'mainloop,
+                Event::KeyDown {keycode: Keycode::Escape, ..} => break 'mainloop,
                 _ => {}
             }
         }

@@ -361,7 +361,7 @@ impl Font {
             if raw.is_null() {
                 Err(get_error())
             } else {
-                Ok(Surface::from_ll(raw, true))
+                Ok(Surface::from_ll(raw))
             }
         }
     }
@@ -374,7 +374,7 @@ impl Font {
             if raw.is_null() {
                 Err(get_error())
             } else {
-                Ok(Surface::from_ll(raw, true))
+                Ok(Surface::from_ll(raw))
             }
         }
     }
@@ -386,7 +386,7 @@ impl Font {
             if raw.is_null() {
                 Err(get_error())
             } else {
-                Ok(Surface::from_ll(raw, true))
+                Ok(Surface::from_ll(raw))
             }
         }
     }
@@ -399,7 +399,7 @@ impl Font {
             if raw.is_null() {
                 Err(get_error())
             } else {
-                Ok(Surface::from_ll(raw, true))
+                Ok(Surface::from_ll(raw))
             }
         }
     }
@@ -412,7 +412,7 @@ impl Font {
             if raw.is_null() {
                 Err(get_error())
             } else {
-                Ok(Surface::from_ll(raw, true))
+                Ok(Surface::from_ll(raw))
             }
         }
     }
@@ -424,7 +424,7 @@ impl Font {
             if raw.is_null() {
                 Err(get_error())
             } else {
-                Ok(Surface::from_ll(raw, true))
+                Ok(Surface::from_ll(raw))
             }
         }
     }
@@ -437,7 +437,7 @@ impl Font {
             if raw.is_null() {
                 Err(get_error())
             } else {
-                Ok(Surface::from_ll(raw, true))
+                Ok(Surface::from_ll(raw))
             }
         }
     }
@@ -450,7 +450,7 @@ impl Font {
             if raw.is_null() {
                 Err(get_error())
             } else {
-                Ok(Surface::from_ll(raw, true))
+                Ok(Surface::from_ll(raw))
             }
         }
     }
@@ -462,7 +462,7 @@ impl Font {
             if raw.is_null() {
                 Err(get_error())
             } else {
-                Ok(Surface::from_ll(raw, true))
+                Ok(Surface::from_ll(raw))
             }
         }
     }
